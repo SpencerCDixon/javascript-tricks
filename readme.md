@@ -4,7 +4,7 @@ researching/learning javascript.
 
 ### Table Of Contents
 
-*  [Javascript The Good Parts](#good_parts)
+*  [Javascript The Good Parts](#javascript_the_good_parts)
 
 (to do organize info)
 
