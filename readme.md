@@ -2,19 +2,20 @@
 This is a repository to hold all JS tips and tricks I find while
 researching/learning javascript.
 
+To Do:
+*  Organize table of contents  
+
+
 ### Table Of Contents
 
-*  [Javascript The Good Parts](#javascript_the_good_parts)
+*  [Objects](#objects)
 *  [JQuery](#jquery)
 
-(to do organize info)
-
-
-
-## Javascript The Good Parts
 
 **Delegated event handlers**: defers calculating whether a DOM element matches
 the event until run time when the event happens
+
+## Objects
 
 Objects in JS are basically just namespaced key/value pairs.
 
@@ -31,7 +32,7 @@ funciton foo(arg1, arg2) {
 }
 
 // instead create funcitons anonymously and assign to a local variable this will
-keep your global namespace cleaner.
+// keep your global namespace cleaner.
 var foo = function(arg1, arg2) {
   return arg1 + arg2;
 }
