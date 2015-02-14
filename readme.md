@@ -1,4 +1,4 @@
-## Javscript Tricks
+## Javascript Tricks
 This is a repository to hold all JS tips and tricks I find while
 researching/learning javascript.
 
@@ -123,6 +123,11 @@ elements in the selector set.  All html syntax will be escaped out.
 Things that arn't objects in JS: boolean literals, numbers, strings, null, and
 undefined.
 
+### This
+When dealing with `this` in Javascript it's important not to compare it to
+`self` in Ruby.  There are certain default behaviors that `this` will use
+depending on the situation and where the function gets called.  Remember it is
+more important where the function is called than where it is defined.
 
 
 
