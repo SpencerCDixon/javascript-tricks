@@ -162,6 +162,45 @@ more sense to use call.  If the arguments are already in an array or easily made
 into an array then apply is your choice.
 
 
+### Anonymous Functions
+
+```javascript
+var ninja = {
+  shout: function() { alert('hey!') }
+}
+// Think of shout as a property not a function name
+// This is using an anonymous function that has no name
+```
+
+### Inline Named Functions
+When using functions as methods (properties on objects) sometimes you want to
+use that method recursively.  The problem that you might run into is if another
+object then references that first method that was being used recursively.  If
+all the names don't match perfectly than there will be an undefined method.
+
+To fix this problem we can create a function method and also give it a name.
+This would be considered an **inline named function**.
+
+
+Example:
+```javascript
+var ninja = {
+  chirp: function signal(n) {
+    return n > 1 ? signal(n - 1) + "-chirp" : "chirp";
+  }
+};
+
+var samurai = { chirp: ninja.chirp }
+
+ninja = {};
+
+samurai.chirp(2);  // this will still work now since we named signal
+```
+
+
+
+
+
 ### Scope With Functions
 
 *  Variable declarations are in scope until the end of the function within which
