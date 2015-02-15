@@ -13,14 +13,6 @@ Good tests:
     possible  
 *  Independent; should execute in isolation
 
-**Callback**: any function that is to be called at a later time.  Elementary
-example:
-
-```javascript
-function useless(callback) {
-  return callback();
-}
-```
 
 ### Functions
 
@@ -35,6 +27,54 @@ and passed as parameters.
 *  They can be passed as arguments to functions.  
 *  They can be returned as values from functions.  
 *  They can possess properties that can be dynamically created and assigned.  
+
+**Callback**: any function that is to be called at a later time.  Elementary
+example:
+
+```javascript
+function useless(callback) {
+  return callback();
+}
+```
+
+When a function is declared at the top level, a property using the function name
+is declared on `window`.
+
+**Tip**: In JS, scopes are declared by functions and not blocks (like in Ruby)
+be careful not to have bias toward what you might think the scope is based on
+past programming languages you know.
+
+#### Four Ways To Call Functions:  
+1.  As a function, normal straightforward manner using ()  
+2.  As a method, which ties the invocation to an object, enabling OO
+programming.  
+3.  As a constructor, in which a new object is brought into being.  
+4.  Via its apply() and call() which have special meaning.  
+
+When calling a function arguments are passed into parameters in order:
+
+```javascript
+function whatever(a,b,c) {
+...
+}
+
+whatever(1,2,3,4,5) // 4 and 5 wont be assigned to any parameters
+whatever(1,2) // c is set to undefined
+```
+All function invocations are passed two implicit parameters: `arguments` and
+`this`.  
+
+`arguments` acts like an array of all the arguments passed into the function and
+you can access elements with array notation: `arguments[0]`
+
+### Scope With Functions
+
+*  Variable declarations are in scope until the end of the function within which
+    they're declared, regardless of block nesting.  
+
+**Tip**: Functions can be forward-referenced, but not variable declarations.  
+
+
 
 ### Events  
 **Events in JS**:  
@@ -53,9 +93,9 @@ no other events can be triggered until that one is over.  Think of the bank
 teller at the window analogy and you have someone who wants their financial
 planning for the entire year.  
 
-Order of operations:
-1.  Parse markup and set up DOM
-2.  Check for event at head of queue
-3.  If an event -> process it, otherwise step 2.
+Order of operations:  
+1.  Parse markup and set up DOM  
+2.  Check for event at head of queue  
+3.  If an event -> process it, otherwise step 2.  
 
 
