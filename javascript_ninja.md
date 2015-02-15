@@ -67,6 +67,101 @@ All function invocations are passed two implicit parameters: `arguments` and
 `arguments` acts like an array of all the arguments passed into the function and
 you can access elements with array notation: `arguments[0]`
 
+`this` is referred to as the _function context_.  BEWARE it does NOT act like
+`self` in Ruby.  `this` is declared by **how** it is invoked and NOT **where**
+it is declared.  Depending on which of the 4 types of function invocation is
+used `this` will act differently:
+
+1.  As a function:  (Meaning it wasn't invoked as a method, as a constructor, or
+using `call()` or `apply()`)  
+
+Examples:  
+```javascript
+function ninja(){};
+ninja();
+
+var samurai = function(){};
+samurai();
+```
+
+2.  As a method: (Meaning it was invoked off an object who defined it)
+
+Example:
+```javascript
+var o = {};
+o.whatever = function(){};
+o.whatever();
+```
+
+Calling methods this way makes `this` refer to the object `o` instead of window.
+Under the hood it's doing the same thing as a global function assigning this to
+window.
+
+3.  As a constructor: (Meaning we use the `new` keyword to invoke the function)
+
+Example:
+```javascript
+function creep() { return this }
+new creep();
+```
+
+What makes constructors special? When they are invoked the following happen:  
+*  a new empty object is created.  
+*  this object is passed to the constructor as the `this` paramter, and thus
+    becomes the constructors function context.  
+*  In the absence of any explicit return value, the new object is returned as
+    the constructors value.  
+
+```javascript
+function Ninja() {
+  this.skulk = function() { return this };
+}
+
+var ninja1 = new Ninja();
+var ninja2 = new Ninja();
+
+ninja1.skulk() // returns ninja1
+ninja2.skulk() // returns ninja2
+```
+
+4.  Using `apply()` and `call()`: allows us to invoke a function and explicitly
+specify any object we want as the function context.
+
+Apply and Call exist for every function.  Because functions are first class
+citizens they can have properties and methods just like any other object type.
+They are created with the Function() constructor.
+
+Using `apply()` we need to pass in two things: object to be used as function
+context, and array of values to be used as function arguments.
+
+Using `call()` is almost the same except you don't need to pass in an array of
+arguments you just put them where they would normally go.
+
+Example:
+```javascript
+function juggle() {
+  var result = 0;
+  for (var n = 0; n < arguments.length; n++) {
+    result += arguments[n];
+  }
+  this.result = result;
+}
+
+var ninja1 = {}
+var ninja2 = {}
+
+juggle.apply(ninja1, [1,2,3,4]);
+juggle.call(ninja2,5,6,7,8);
+
+ninaj1.result // equals 10
+ninaj2.result // equals 26
+```
+
+When to use apply vs. call.  If you have a bunch of unrelated arguments it makes
+more sense to use call.  If the arguments are already in an array or easily made
+into an array then apply is your choice.
+
+
 ### Scope With Functions
 
 *  Variable declarations are in scope until the end of the function within which
