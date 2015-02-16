@@ -2,8 +2,16 @@
 
 (Information from JS ninja that will need to be organized)
 
-
 ### General
+
+Semi-colons are important in order to help with compressing code.
+
+The `!!` construct is a simple way to turn an expression into it's Boolean
+equivalent. Example:
+```javascript
+!!"some text" === true
+!!0 === false
+```
 
 ### Testing
 
@@ -161,6 +169,54 @@ When to use apply vs. call.  If you have a bunch of unrelated arguments it makes
 more sense to use call.  If the arguments are already in an array or easily made
 into an array then apply is your choice.
 
+Here is an example of extending the Math class to create a smallest() and
+largest() method
+with apply:
+```javascript
+function smallest(array) {
+  return Math.min.apply(Math, array);
+}
+
+function largest(array) {
+  return Math.max.apply(Math, array);
+}
+// Math only takes arguments, not arrays.  This way you can pass in an array to
+// find the max
+```
+
+
+### Function Overloading
+
+Using **arguments** keyword to create methods that can take unlimited arguments:
+
+```javascript
+funciton merge(root) {
+  for (var i = 1; 1 < arguements.length; i++) {
+    for (var key in arguments[i]) {
+      root[key] = arguments[i][key]
+    }
+  }
+  return root;
+}
+
+var merged = merge({name: 'spencer'}, {city: 'newton'});
+merged.name === 'spencer'
+merged.city === 'newton'
+```
+
+Functions have a little known attribute called `length` (not to be confused with
+`arguments` length function).  The function length method will tell us how many
+named parameters are on the function when it was declared.
+
+Example:
+```javascript
+function makeNinja(name){};
+makeNinja.length // will equal 1
+
+function makeSamurai(name, rank){};
+makeSamnurai.length // will equal 2
+```
+
 
 ### Anonymous Functions
 
@@ -195,8 +251,11 @@ var samurai = { chirp: ninja.chirp }
 ninja = {};
 
 samurai.chirp(2);  // this will still work now since we named signal
+// if signal had been anonymous this wouldn't have worked
 ```
 
+**Important**: even though inline functions are named they are only visible
+inside within the function themselves.
 
 
 
