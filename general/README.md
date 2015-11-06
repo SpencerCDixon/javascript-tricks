@@ -1,0 +1,4 @@
+## General Javascript Information
+
+
+#### Primitives:
