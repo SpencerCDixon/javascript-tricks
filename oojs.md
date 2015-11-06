@@ -1,7 +1,6 @@
 # Object Oriented JS Notes
 
 
-
 You can add or remove properties from objects in JS at anytime.  For example:
 ```javascript
 var object1 = new Object();
