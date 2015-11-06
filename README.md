@@ -1,3 +1,5 @@
+Testing the readme for GitBooks
+
 ## Javascript Tricks
 This is a repository to hold all JS tips and tricks I find while
 researching/learning javascript.
