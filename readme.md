@@ -2,13 +2,12 @@
 This is a repository to hold all JS tips and tricks I find while
 researching/learning javascript.
 
-To Do:
-*  Organize table of contents  
-
-
 ### Table Of Contents
 
-*  [Objects](#objects)
+*  [Node]()
+*  [Functional Javascript]()
+*  [OOJavascript](#objects)
+*  [React]()
 *  [JQuery](#jquery)
 
 
